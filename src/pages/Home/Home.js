@@ -5,7 +5,7 @@ export default class Home {
 
   async render() {
     const Home = document.createElement("div");
-    Home.setAttribute("class", "home");
+    Home.setAttribute("id", "home");
 
     const Main = document.createElement("main");
     Main.setAttribute("class", "main");

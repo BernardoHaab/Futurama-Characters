@@ -1,3 +1,5 @@
+import Details from "./Datails";
+
 export default class Card {
   constructor(character) {
     this.state = {
@@ -7,8 +9,9 @@ export default class Card {
       gender: character.gender,
       species: character.species,
       homePlanet: character.homePlanet,
-      ocupation: character.ocupation,
+      occupation: character.occupation,
       sayings: character.sayings,
+      age: character.age,
     };
 
     if (character.images && character.images.main) {
@@ -23,8 +26,22 @@ export default class Card {
     Card.append(this.getImageElement());
     Card.append(this.getTitleElement());
 
-    Card.addEventListener("click", () => {
-      console.log(this.state);
+    Card.addEventListener("click", async () => {
+      window.scrollTo(0, 0);
+      const Opaque = document.createElement("div");
+      Opaque.setAttribute("class", "opaque");
+      const HomeElement = document.getElementById("home");
+      HomeElement.append(Opaque);
+
+      const DetailsContainer = document.createElement("div");
+      DetailsContainer.setAttribute("class", "details-container");
+      DetailsContainer.append(await new Details(this.state).render());
+      HomeElement.append(DetailsContainer);
+
+      Opaque.addEventListener("click", () => {
+        Opaque.parentNode.removeChild(Opaque);
+        DetailsContainer.parentNode.removeChild(DetailsContainer);
+      });
     });
 
     return Card;
