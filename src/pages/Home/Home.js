@@ -1,7 +1,5 @@
 import CharactersList from "../../components/CharactersList";
 
-// import FuturamaImg from '../../assets/images/futurama_logo.png"';
-
 export default class Home {
   constructor() {
     this.allCharacters = new Array();
@@ -75,7 +73,7 @@ export default class Home {
 
     FilterForm.append(this.getSearchElement());
 
-    const FiltersTitle = document.createElement("h4");
+    const FiltersTitle = document.createElement("h3");
     FiltersTitle.setAttribute("id", "filters-title");
     FiltersTitle.innerHTML = "Species:";
     FilterForm.append(FiltersTitle);
@@ -95,11 +93,14 @@ export default class Home {
     Icon.innerHTML = "search";
     SearchContainer.append(Icon);
 
+    const SearchFieldContainer = document.createElement("span");
+    SearchFieldContainer.setAttribute("id", "search-field-container");
     const SearchField = document.createElement("input");
     SearchField.setAttribute("name", "search");
     SearchField.setAttribute("placeholder", "Search");
     SearchField.setAttribute("value", this.search);
-    SearchContainer.append(SearchField);
+    SearchFieldContainer.append(SearchField);
+    SearchContainer.append(SearchFieldContainer);
 
     SearchField.addEventListener("input", async () => {
       this.search = SearchField.value;

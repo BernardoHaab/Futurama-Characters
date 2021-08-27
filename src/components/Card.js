@@ -3,9 +3,9 @@ import Details from "./Datails";
 export default class Card {
   constructor(character) {
     this.character = {
-      name: character.name.first,
+      name: "Unknown Name",
       image:
-        "https://upload.wikimedia.org/wikipedia/de/thumb/4/4e/Futurama-logo.svg/1920px-Futurama-logo.svg.png",
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HbJIB8q08sp1pkUEH4zijwHaK5%26pid%3DApi&f=1",
       gender: character.gender,
       species: character.species,
       homePlanet: character.homePlanet,
@@ -14,9 +14,19 @@ export default class Card {
       age: character.age,
     };
 
+    this.character.name = this.getName(character);
+
     if (character.images && character.images.main) {
       this.character.image = character.images.main.split("/revision")[0];
     }
+  }
+
+  getName(character) {
+    return character.name.first
+      ? character.name.first
+      : character.name.second
+      ? character.name.secondlast
+      : character.name.last;
   }
 
   render() {
@@ -80,7 +90,7 @@ export default class Card {
 
     Saying.innerHTML = `— "${
       this.character.sayings[
-        Math.floor(Math.random() * this.character.sayings.length + 1)
+        Math.floor(Math.random() * this.character.sayings.length)
       ]
     }"`;
 
