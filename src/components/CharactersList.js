@@ -13,18 +13,6 @@ export default class CharactersList {
       character.name && CharactersList.append(new Card(character).render());
     });
 
-    // try {
-    //   const res = await fetch(
-    //     "https://api.sampleapis.com/futurama/characters/"
-    //   );
-    //   const characters = await res.json();
-
-    //   this.characters.forEach((character) => {
-    //     character.name && CharactersList.append(new Card(character).render());
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
     return CharactersList;
   }
 

@@ -2,7 +2,7 @@ import Details from "./Datails";
 
 export default class Card {
   constructor(character) {
-    this.state = {
+    this.character = {
       name: character.name.first,
       image:
         "https://upload.wikimedia.org/wikipedia/de/thumb/4/4e/Futurama-logo.svg/1920px-Futurama-logo.svg.png",
@@ -15,7 +15,7 @@ export default class Card {
     };
 
     if (character.images && character.images.main) {
-      this.state.image = character.images.main.split("/revision")[0];
+      this.character.image = character.images.main.split("/revision")[0];
     }
   }
 
@@ -35,7 +35,7 @@ export default class Card {
 
       const DetailsContainer = document.createElement("div");
       DetailsContainer.setAttribute("class", "details-container");
-      DetailsContainer.append(await new Details(this.state).render());
+      DetailsContainer.append(await new Details(this.character).render());
       HomeElement.append(DetailsContainer);
 
       Opaque.addEventListener("click", () => {
@@ -49,9 +49,9 @@ export default class Card {
 
   getImageElement() {
     const Image = document.createElement("img");
-    Image.setAttribute("src", this.state.image);
+    Image.setAttribute("src", this.character.image);
     Image.setAttribute("class", "character-image");
-    Image.setAttribute("alt", this.state.name);
+    Image.setAttribute("alt", this.character.name);
 
     return Image;
   }
@@ -70,7 +70,7 @@ export default class Card {
     const Name = document.createElement("h2");
 
     Name.setAttribute("class", "character-name");
-    Name.innerHTML = this.state.name;
+    Name.innerHTML = this.character.name;
 
     return Name;
   }
@@ -79,8 +79,8 @@ export default class Card {
     const Saying = document.createElement("p");
 
     Saying.innerHTML = `— "${
-      this.state.sayings[
-        Math.floor(Math.random() * this.state.sayings.length + 1)
+      this.character.sayings[
+        Math.floor(Math.random() * this.character.sayings.length + 1)
       ]
     }"`;
 
