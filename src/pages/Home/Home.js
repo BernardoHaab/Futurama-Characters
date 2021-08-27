@@ -17,7 +17,7 @@ export default class Home {
     const Home = document.createElement("div");
     Home.setAttribute("id", "home");
 
-    // Home.append(this.getFeturedImage());
+    Home.append(this.getFeturedImage());
     try {
       const res = await fetch(
         "https://api.sampleapis.com/futurama/characters/"
@@ -44,6 +44,29 @@ export default class Home {
     this.mainElement.append(await this.characterListElement.render());
 
     return Home;
+  }
+
+  getFeturedImage() {
+    const ImageContainer = document.createElement("div");
+    ImageContainer.setAttribute("class", "feturedimage-container");
+
+    const FeturedImage = document.createElement("img");
+    FeturedImage.setAttribute("id", "fetured-image");
+    FeturedImage.setAttribute(
+      "src",
+      "https://i.postimg.cc/MKfYcW0Q/Component-2-1.jpg"
+    );
+    ImageContainer.append(FeturedImage);
+    const FuturamaLogo = document.createElement("img");
+    FuturamaLogo.setAttribute("class", "futurama-logo");
+    FuturamaLogo.setAttribute(
+      "src",
+      "https://i.postimg.cc/vHDYFmRC/external-content-duckduckgo-2.png"
+    );
+    FuturamaLogo.setAttribute("alt", "Futurama");
+    ImageContainer.append(FuturamaLogo);
+
+    return ImageContainer;
   }
 
   getFilterFormElemet() {
@@ -145,20 +168,5 @@ export default class Home {
     });
 
     this.species = [...new Set(species)];
-  }
-
-  getFeturedImage() {
-    const ImageContainer = document.createElement("div");
-    ImageContainer.setAttribute("class", "feturedimage-container");
-
-    const FuturamaLogo = document.createElement("img");
-    FuturamaLogo.setAttribute(
-      "src",
-      "https://i.postimg.cc/44rzdnFm/futurama-logo.png"
-    );
-    FuturamaLogo.setAttribute("alt", "Futurama");
-    ImageContainer.append(FuturamaLogo);
-
-    return ImageContainer;
   }
 }

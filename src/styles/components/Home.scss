@@ -7,13 +7,22 @@
 }
 
 .feturedimage-container {
-  background-image: url("https://i.postimg.cc/FFfyN0pM/fetured-image.jpg");
-
   display: flex;
   justify-content: center;
+  max-height: 90vh;
+  overflow: hidden;
 
-  img {
-    margin-top: 2rem;
+  #fetured-image {
+    width: 100%;
+    height: min-content;
+  }
+
+  .futurama-logo {
+    position: absolute;
+    top: 1.3rem;
+    width: 30vw;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
