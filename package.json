@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --hot --mode development",
-    "build": "webpack --mode production"
+    "start": "webpack serve --hot --config ./webpack.config.js --mode development",
+    "build": "webpack --config ./webpack.config.js --mode production"
   },
   "author": "Bernardo Haab",
   "license": "ISC",

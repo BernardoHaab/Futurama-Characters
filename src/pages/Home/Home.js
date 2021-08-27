@@ -74,6 +74,12 @@ export default class Home {
     FilterForm.setAttribute("class", "filter-form");
 
     FilterForm.append(this.getSearchElement());
+
+    const FiltersTitle = document.createElement("h4");
+    FiltersTitle.setAttribute("id", "filters-title");
+    FiltersTitle.innerHTML = "Species:";
+    FilterForm.append(FiltersTitle);
+
     FilterForm.append(this.getFilterElement());
 
     return FilterForm;
@@ -83,8 +89,15 @@ export default class Home {
     const SearchContainer = document.createElement("div");
     SearchContainer.setAttribute("class", "search-container");
 
+    const Icon = document.createElement("span");
+
+    Icon.setAttribute("class", "material-icons");
+    Icon.innerHTML = "search";
+    SearchContainer.append(Icon);
+
     const SearchField = document.createElement("input");
     SearchField.setAttribute("name", "search");
+    SearchField.setAttribute("placeholder", "Search");
     SearchField.setAttribute("value", this.search);
     SearchContainer.append(SearchField);
 
@@ -107,6 +120,7 @@ export default class Home {
     FiltersContainer.setAttribute("class", "filters-container");
 
     this.species.forEach((specie) => {
+      const Filter = document.createElement("p");
       const FilterLabel = document.createElement("label");
       const FilterCheckbox = document.createElement("input");
 
@@ -131,10 +145,10 @@ export default class Home {
           )
         );
       });
+      Filter.append(FilterCheckbox);
+      Filter.append(FilterLabel);
 
-      FilterLabel.append(FilterCheckbox);
-
-      FiltersContainer.append(FilterLabel);
+      FiltersContainer.append(Filter);
     });
 
     return FiltersContainer;

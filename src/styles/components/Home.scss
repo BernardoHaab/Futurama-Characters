@@ -28,9 +28,51 @@
 
 .search-container {
   margin: 16px auto;
+  padding: 8px;
+  background: #eaeaea;
+  border-radius: 20px;
+
+  > span {
+    vertical-align: middle;
+    margin-right: 4px;
+    color: lightslategray;
+  }
+
+  > input {
+    background: transparent;
+    border: none;
+    vertical-align: middle;
+
+    &::placeholder {
+      color: #3c3c43;
+    }
+  }
+}
+
+#filters-title {
+  color: #7c7c7c;
 }
 
 .filters-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  margin-bottom: 24px;
+
+  & > :last-child {
+    margin: 0;
+  }
+
+  p {
+    margin-right: 16px;
+
+    > input {
+      margin-right: 4px;
+    }
+  }
+
   > label {
     margin-right: 0.5rem;
   }
