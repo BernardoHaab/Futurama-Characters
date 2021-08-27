@@ -1,4 +1,28 @@
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.feturedimage-container {
+  background-image: url("https://i.postimg.cc/FFfyN0pM/fetured-image.jpg");
+
+  display: flex;
+  justify-content: center;
+
+  img {
+    margin-top: 2rem;
+  }
+}
+
+.search-container {
+  margin: 16px auto;
+}
+
+.filters-container {
+  > label {
+    margin-right: 0.5rem;
+  }
 }
